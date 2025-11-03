@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="icon" href="avatar.png" type="image/png"> <!-- Will change icon later -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,33 +12,42 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="experiments.html">Experiments</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <img src="avatar.png" alt="Avatar Image" width="200" height="200">
+        <picture>
+            <source srcset="images/self.avif" type="image/avif">
+            <source srcset="images/self.webp" type="image/webp">
+            <source srcset="images/self.jpg"  type="image/jpeg">
+            <img
+            src="images/self.JPG"
+            alt="A portrait of me in front of Geisel Library at UCSD."
+            class="profile-img"
+            decoding="async"
+            fetchpriority="high">
+        </picture>
+
         <div id="about-me">
             <h2>About Me</h2>
-            <p>My name is Ethan Kook and I am a computer engineering major at <b>UCSD</b>. I love to play basketball and music ...
-            Rest of about me goes here...</p>
+            <p>My name is Ethan Kook and I am a computer engineering major at <b>UCSD</b>. I love to play basketball and guitar, and love going snowboarding. </p>
         </div>
         
         <div id="skills">
             <h2>Skills</h2>
             <ol>
-                <li>HTML <progress value="85" max="100">85%</progress></li>
-                <li>CSS <progress value="70" max="100">70%</progress></li>
-                <li>JavaScript <progress value="60" max="100">60%</progress></li>
+                <li>C++ <progress value="85" max="100">85%</progress></li>
+                <li>Java <progress value="70" max="100">70%</progress></li>
+                <li>Python <progress value="60" max="100">60%</progress></li>
                 <li>Fill in later <progress value="25" max="100">25%</progress></li>
             </ol>
         </div>
 
         <div id="experience">
             <h2>Experience/ Accomplishments</h2>
-            <p>I have relevant experience working as a software engineering intern at xyz where blah blah blah <i>(fill in
+            <p>I have relevant experience working as a software engineering intern at iVector <i>(fill in
             the rest later)</i></p>
             
             <!--  SVG timeline -->

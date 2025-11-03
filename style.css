@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root {
-  --primary-color: #005f73;
-  --secondary-color: #0a9396;
+  --primary-color: #3f3f3f;
+  --secondary-color: #ffd900d3;
   --background-color: #ffffff;
   --text-color: var(--primary-dark, #333);
-  --accent-color: #ee9b00;
+  --accent-color: #5d5d5d;
   --border-radius: 8px;
   --spacing-unit: 1rem;
 }
@@ -33,19 +33,28 @@ main {
 h1, h2, h3 {
   color: var(--primary-color);
   text-wrap: balance;
+  text-align: center;
 }
 
 header {
   background: var(--primary-color);
-  padding: var(--spacing-unit) 0;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: 0 var(--spacing-unit);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    
     padding: 0;
     margin: 0;
+    gap: 0.5em;
 
     li a {
       color: white;
@@ -85,10 +94,26 @@ footer {
   animation: draw-line 2s ease-out forwards;
 }
 
+.socials {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+
+  a {
+    color: var(--primary-color);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+}
+
 form {
   background-color: color-mix(in srgb, var(--background-color) 80%, white);
   padding: var(--spacing-unit);
   border-radius: var(--border-radius);
+  text-align: left;
 }
 
 form fieldset {
@@ -121,7 +146,6 @@ label:has(+ input:required:invalid) {
   }
 }
 
-/* Projects Page - Grid Layout */
 #projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -135,7 +159,8 @@ label:has(+ input:required:invalid) {
   padding: var(--spacing-unit);
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: scroll;
+  overflow: auto;
+  max-height: 50vh;
 }
 
 #projects article:hover {
@@ -143,18 +168,74 @@ label:has(+ input:required:invalid) {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+#projects h3 {
+  text-align: center;
+}
+.github-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.github-link .fa-github {
+  margin-left: 0.5rem;
+}
+
+.table-wrapper {
+  margin: 1rem 0;
+}
+
+.instruction-set-table {
+  border-collapse: separate;
+  border-spacing: 1rem 0.5rem;
+}
+
+.profile-img {
+  border-radius: var(--border-radius);
+  object-fit: cover;
+  width: 300px;
+  height: 450px;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  margin: 0.5 auto;
+  border-radius: var(--border-radius);
+}
+
+.avatar-img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--secondary-color);
+}
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  #projects {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Phone */
 @media (max-width: 768px) {
   body {
     padding: calc(var(--spacing-unit) / 2);
   }
 
-  header nav ul {
+  header {
     flex-direction: column;
-    align-items: center;
-
-    li {
-      margin-bottom: 0.5rem;
-    }
   }
 
   main {
@@ -170,13 +251,21 @@ label:has(+ input:required:invalid) {
   }
 
   #projects {
-    grid-template-columns: 1fr; /* Stack projects on small screens */
+    grid-template-columns: 1fr;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .table-wrapper {
+    height: 350px;
+  }
+  .instruction-set-table {
+    transform: scale(0.6);
+    transform-origin: 0 0;
   }
 }
 
-/* Center content on home and contact pages using :has() to avoid adding classes */
 main:has(#about-me),
-main:has(#resume-section) {
+main:has(form) {
   display: flex;
   flex-direction: column;
   align-items: center;
